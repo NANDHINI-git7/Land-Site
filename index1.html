@@ -1,0 +1,90 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            /* Carousel container */
+            .carousel-container {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                /* Adjust this based on your needs */
+                margin: auto;
+                overflow: hidden;
+            }
+
+            /* Carousel images */
+            .carousel-image {
+                display: none;
+                width: 100%;
+            }
+
+            /* Show the first image by default */
+            .carousel-image.active {
+                display: block;
+            }
+
+            /* Media query for small screens */
+            @media (max-width: 768px) {
+
+                #prev,
+                #next {
+                    display: inline-block;
+                    padding: 10px;
+                    font-size: 1rem;
+                    margin: 10px;
+                }
+            }
+
+            /* Media query for larger screens */
+            @media (min-width: 769px) {
+
+                #prev,
+                #next {
+                    display: inline-block;
+                    font-size: 1.2rem;
+                    margin: 5px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="carousel-container">
+            <img class="carousel-image" src="image1.jpg" alt="Image 1">
+            <img class="carousel-image" src="image2.jpg" alt="Image 2">
+            <img class="carousel-image" src="image3.jpg" alt="Image 3">
+            <img class="carousel-image" src="image4.jpg" alt="Image 4">
+        </div>
+        <button id="prev" onclick="showPrevious()">Previous</button>
+        <button id="next" onclick="showNext()">Next</button>
+        <script>
+            let currentIndex = 0;
+            const images = document.querySelectorAll(".carousel-image");
+
+            function updateImage() {
+                images.forEach((img, index) => {
+                    img.classList.toggle("active", index === currentIndex);
+                });
+            }
+
+            function showNext() {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
+            }
+
+            function showPrevious() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage();
+            }
+
+            // Initialize by showing the first image
+            updateImage();
+
+        </script>
+
+    </body>
+
+</html>
