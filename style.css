@@ -197,7 +197,7 @@ header {
 
 section {
   height: 76vh;
-  background-image: url('./img/BannerImage.png');
+  background-image: url('./BannerImage.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
